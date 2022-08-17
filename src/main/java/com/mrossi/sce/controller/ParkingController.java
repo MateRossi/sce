@@ -4,6 +4,7 @@ import com.mrossi.sce.controller.dto.ParkingDTO;
 import com.mrossi.sce.controller.mapper.ParkingMapper;
 import com.mrossi.sce.model.Parking;
 import com.mrossi.sce.service.ParkingService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,9 +24,9 @@ public class ParkingController {
     }
 
     @GetMapping
-    public List<ParkingDTO> findAll() {
+    public ResponseEntity<List<ParkingDTO>> findAll() {
         List<Parking> parkingList = parkingService.findAll();
         List<ParkingDTO> result = parkingMapper.toParkingDTOList(parkingList);
-        return result;
+        return ResponseEntity.ok(result);
     }
 }
