@@ -1,4 +1,4 @@
-package com.mrossi.sce.model;
+package com.mrossi.sce.service.model;
 
 import java.time.LocalDateTime;
 
