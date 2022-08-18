@@ -58,4 +58,10 @@ public class ParkingController {
         ParkingDTO result = parkingMapper.toParkingDTO(parking);
         return ResponseEntity.status(HttpStatus.OK).body(result);
     }
+
+    //fazer o método exit
+    //recuperar o estacionado
+    //atualizar data saida
+    //calcular valor
+
 }
