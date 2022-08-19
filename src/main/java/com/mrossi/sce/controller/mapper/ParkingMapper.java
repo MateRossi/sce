@@ -2,7 +2,7 @@ package com.mrossi.sce.controller.mapper;
 
 import com.mrossi.sce.controller.dto.ParkingCreateDTO;
 import com.mrossi.sce.controller.dto.ParkingDTO;
-import com.mrossi.sce.service.model.Parking;
+import com.mrossi.sce.model.Parking;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 

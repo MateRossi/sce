@@ -3,7 +3,7 @@ package com.mrossi.sce.controller;
 import com.mrossi.sce.controller.dto.ParkingCreateDTO;
 import com.mrossi.sce.controller.dto.ParkingDTO;
 import com.mrossi.sce.controller.mapper.ParkingMapper;
-import com.mrossi.sce.service.model.Parking;
+import com.mrossi.sce.model.Parking;
 import com.mrossi.sce.service.ParkingService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -59,6 +59,11 @@ public class ParkingController {
         return ResponseEntity.status(HttpStatus.OK).body(result);
     }
 
+    @PostMapping("/{id}")
+    public ResponseEntity<ParkingDTO> checkOut(@PathVariable String id) {
+        Parking parking = parkingService.checkOut(id);
+        return ResponseEntity.ok(parkingMapper.toParkingDTO(parking));
+    }
     //fazer o método exit
     //recuperar o estacionado
     //atualizar data saida
