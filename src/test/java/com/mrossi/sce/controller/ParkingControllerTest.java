@@ -3,6 +3,7 @@ package com.mrossi.sce.controller;
 import com.mrossi.sce.controller.dto.ParkingCreateDTO;
 import io.restassured.RestAssured;
 import org.hamcrest.Matchers;
+import org.junit.Ignore;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -11,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+//@Ignore //TIRAR - USO APENAS LOCALMENTE 
 class ParkingControllerTest extends AbstractContainerBase {
 
     @LocalServerPort
@@ -24,6 +26,8 @@ class ParkingControllerTest extends AbstractContainerBase {
     @Test
     void whenFindAllThenCheckResult() {
         RestAssured.given()
+                .auth()
+                .basic("user", "mrossi@123")
                 .when()
                 .get("/parking")
                 .then()
@@ -40,6 +44,8 @@ class ParkingControllerTest extends AbstractContainerBase {
 
         RestAssured.given()
                 .when()
+                .auth()
+                .basic("user", "mrossi@123")
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
                 .body(createDTO)
                 .post("/parking")
