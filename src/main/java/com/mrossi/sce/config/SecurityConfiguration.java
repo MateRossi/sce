@@ -2,6 +2,7 @@ package com.mrossi.sce.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authorization.AuthenticatedAuthorizationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -24,11 +25,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .passwordEncoder(passwordEncoder());
     }
-    /*
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/swagger-ui/index.html").permitAll()
+                .anyRequest().permitAll();
+    /*.antMatchers("/swagger-ui/index.html").permitAll()
                 .antMatchers("/swagger-resources/**").permitAll()
                 .antMatchers("/webjars/**").permitAll()
                 .antMatchers("/v3/api-docs/**").permitAll()
@@ -38,13 +40,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/*.css").permitAll()
                 .antMatchers("/*.ico").permitAll()
                 .antMatchers("/*.png").permitAll()
-                .anyRequest().authenticated()
+                .antMatchers(HttpMethod.GET,"/parking").authenticated()
                 .and().httpBasic()
                 .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-    }
-    */
 
+                 */
+    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
